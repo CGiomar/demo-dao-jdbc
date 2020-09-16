@@ -100,10 +100,13 @@ public class SellerDaoJDBC implements SellerDao{
 			st = conn.prepareStatement(
 				"DELETE FROM seller WHERE Id = ?");
 				st.setInt(1, id);
+				
 				int rows = st.executeUpdate();
+				
 				if(rows == 0) {
 					throw new DbException("invalid Id! none rows affected");
 				}
+				
 		}
 		catch(SQLException e) {
 			throw new DbException(e.getMessage());
